@@ -36,7 +36,7 @@
                 </div> --}}
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary" wire:click='updateUser'>Submit</button>
+                <button type="submit" class="btn btn-primary" wire:click.prevent='updateUser'>Submit</button>
             </div>
         </form>
     </div>

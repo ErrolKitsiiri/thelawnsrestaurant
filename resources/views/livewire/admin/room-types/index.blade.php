@@ -38,12 +38,15 @@
                                                                 class="btn btn-dark flex-col mx-2">
                                                                 <i class="fas fa-edit"></i>
                                                             </a>
-                                                            <button
+                                                            {{-- <button
                                                                 onclick="confirm('Are you Sure you want to delete this Room Type?')||event.stopImmediatePropagation()"
                                                                 wire:click="deleteRoomType({{ $roomType->id }})"
                                                                 class="btn btn-danger flex-col mx-2">
                                                                 <i class="fas fa-trash"></i>
-                                                            </button>
+                                                            </button> --}}
+                                                            {{-- <button onclick="showConfirmation(event, {{ $roomType->id }}, 'room type')" class="btn btn-danger flex-col mx-2">
+                                                                <i class="fas fa-trash"></i>
+                                                            </button> --}}
                                                         </td>
                                                     </tr>
                                                 @endforeach

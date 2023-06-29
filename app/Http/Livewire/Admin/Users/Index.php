@@ -24,8 +24,10 @@ class Index extends Component
 
         $user->delete();
 
-        $this->emit('done', [
-            'success'=>"Successfully Deleted the User from the system"
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'User Deleted Successfully'
         ]);
 
     }

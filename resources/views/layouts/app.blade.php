@@ -57,7 +57,7 @@
     <title>Dashboard - The Lawns Restaurant</title>
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet"/>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="/admin/css/styles.css" rel="stylesheet" />
@@ -131,16 +131,54 @@
     <script src="/admin/js/datatables-simple-demo.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
-    @livewireStyles 
+    @livewireStyles
 
     @stack('scripts')
 
     @stack('modals')
 
     @livewireScripts()
-    <!--Toaster cdb-->
+
+    {{-- <script>
+        window.addEventListener('success', function(e){
+            Swal.fire(e.detail);
+        });
+    </script> --}}
+
     <script>
+        window.addEventListener('success', function(e) {
+            Swal.fire({
+                icon: e.detail.icon,
+                title: e.detail.title,
+                text: e.detail.text
+            });
+        });
+    </script>
+
+    {{-- <script>
+        window.addEventListener('success', function(e) {
+            if (e.detail.type === 'success') {
+                Swal.fire({
+                    icon: 'success',
+                    title: e.detail.title,
+                    text: e.detail.text
+                });
+            } else if (e.detail.type === 'warning') {
+                Swal.fire({
+                    icon: 'warning',
+                    title: e.detail.title,
+                    text: e.detail.text
+                });
+            }
+            // Add more conditions for other event instances if needed
+        });
+    </script> --}}
+
+    
+    <!--Toaster cdb-->
+    {{-- <script>
         Livewire.on('done', (e) => {
             if (e.success) {
                 Toast.fire({
@@ -167,7 +205,7 @@
                 })
             }
         });
-    </script>
+    </script> --}}
 
 </body>
 

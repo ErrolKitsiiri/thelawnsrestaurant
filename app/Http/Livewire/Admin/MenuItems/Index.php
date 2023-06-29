@@ -23,5 +23,10 @@ class Index extends Component
         $menuItem = MenuItem::where('id', $id)->first();
 
         $menuItem->delete();
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Menu Item Deleted Successfully'
+        ]);
     }
 }

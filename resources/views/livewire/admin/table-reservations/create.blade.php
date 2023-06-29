@@ -13,7 +13,7 @@
                                     <div class="card-body ring-offset-2">
                                         <form>
                                             <div class="form-group" wire:ignore>
-                                                <select class="form-control" id="select2" class="form-control">
+                                                <select class="form-control" id="select2" wire:model='selectedCustomer'>
                                                     <option value="">Select Customer</option>
                                                     @foreach ($customers as $customer)
                                                         <option value="{{ $customer }}">{{ $customer->name }}
@@ -21,19 +21,27 @@
                                                     @endforeach
                                                 </select>
                                             </div>
+
+                                            @error('selectedCustomer')
+                                                <span class="error text-danger">{{ $message }}</span>
+                                            @enderror
+
                                             <div class="form-group">
                                                 <label wire:ignore>Customer Name:</label>
-                                                <input type="text" class="form-control" readonly value=" {{ $customerData['name']?? null }}">
+                                                <input type="text" class="form-control" readonly
+                                                    value=" {{ $customerData['name'] ?? null }}">
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Customer Email:</label>
-                                                <input type="text" class="form-control" readonly value="{{ $customerData['email']?? null }}">
+                                                <input type="text" class="form-control" readonly
+                                                    value="{{ $customerData['email'] ?? null }}">
                                             </div>
 
                                             <div class="form-group">
                                                 <label>Customer Phone Number:</label>
-                                                <input type="text" class="form-control" readonly value="{{ $customerData['phone_number'] ?? null}}">
+                                                <input type="text" class="form-control" readonly
+                                                    value="{{ $customerData['phone_number'] ?? null }}">
                                             </div>
 
                                             <div class="form-group">
@@ -72,7 +80,8 @@
                                                 <div class="buttons">
                                                     <button class="btn btn-success" type="submit"
                                                         wire:click.prevent='createTableReservation'>Save</button>
-                                                    <a href="{{ route('admin.table-reservations.index') }}" class="btn btn-danger">Back to list</a>
+                                                    <a href="{{ route('admin.table-reservations.index') }}"
+                                                        class="btn btn-danger">Back to list</a>
                                                 </div>
                                             </div>
                                         </form>

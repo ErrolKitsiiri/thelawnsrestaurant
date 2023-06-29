@@ -1,4 +1,9 @@
 <div>
+    @if (session()->has('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
     <div>
         <div>
             <div class="main-content">
@@ -12,15 +17,6 @@
                                     </div>
                                     <div class="card-body ring-offset-2">
                                         <form>
-                                            {{-- <div class="form-group" wire:ignore>
-                                                <select class="form-control" id="select2" class="form-control">
-                                                    <option value="">Select Customer</option>
-                                                    @foreach ($customers as $customer)
-                                                        <option value="{{ $customer }}">{{ $customer->name }}
-                                                        </option>
-                                                    @endforeach
-                                                </select>
-                                            </div> --}}
 
                                             <div class="form-group">
                                                 <label wire:ignore>Customer Name:</label>
@@ -29,35 +25,42 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Customer Email:</label>
+                                                <label wire:ignore>Customer Email:</label>
                                                 <input type="text" class="form-control" readonly
                                                     value="{{ $client ? $client->email : '' }}">
                                             </div>
 
                                             <div class="form-group">
-                                                <label>Customer Phone Number:</label>
+                                                <label wire:ignore>Customer Phone Number:</label>
                                                 <input type="text" class="form-control" readonly
                                                     value="{{ $client ? $client->phone_number : '' }}">
                                             </div>
                                             <div class="form-group">
                                                 <label for="room_type">Room Type</label>
-                                                <select class="form-control" name="room_type" id="room_type" wire:model='roomType'>
+                                                <select class="form-control" name="room_type" id="room_type"
+                                                    wire:model='roomType'>
                                                     <option value="">Select a Room Type</option>
                                                     @foreach ($roomTypes as $roomType)
-                                                        <option value="{{ $roomType->id }}">{{ $roomType->title }}</option>
+                                                        <option value="{{ $roomType->id }}">{{ $roomType->title }}
+                                                        </option>
                                                     @endforeach
                                                 </select>
                                             </div>
+                                            @error('roomType')
+                                                <span class="error text-danger">{{ $message }}</span>
+                                            @enderror
                                             <div>
                                                 <label for="room_number">Room Number</label>
                                                 <select wire:model="roomNumber" id="room_number" class="form-control">
                                                     <option value="">Select Room Number</option>
-                                                    @foreach($roomNumbers as $id => $number)
+                                                    @foreach ($roomNumbers as $id => $number)
                                                         <option value="{{ $id }}">{{ $number }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>
-
+                                            @error('roomNumber')
+                                                <span class="error text-danger">{{ $message }}</span>
+                                            @enderror
                                             <div class="form-group">
                                                 <label>Check in Date :</label>
                                                 <div class="input-group date" id="reservationdatetime"
@@ -72,7 +75,6 @@
                                             @error('check_in')
                                                 <span class="error text-danger">{{ $message }}</span>
                                             @enderror
-
                                             <div class="form-group">
                                                 <label>Check out Date :</label>
                                                 <div class="input-group date" id="reservationdatetime"
@@ -87,17 +89,12 @@
                                             @error('check_out')
                                                 <span class="error text-danger">{{ $message }}</span>
                                             @enderror
-
-                                            {{-- <div class="form-group">
-                                                <label for="rate">Rate</label>
-                                                <input type="text" class="form-control" id="rate" name="rate" value="{{ $reservation->rate }}" readonly>
-                                            </div> --}}
-
                                             <div class="form-group">
                                                 <label for="rate">Rate</label>
-                                                <input wire:model="rate" type="text" id="rate" class="form-control" readonly value="{{ $reservation->rate ?? '' }}">
+                                                <input wire:model="rate" type="text" id="rate"
+                                                    class="form-control" readonly value='{{ $rate }}'>
                                                 @error('rate')
-                                                <span class="text-danger">{{ $message }}</span>
+                                                    <span class="text-danger">{{ $message }}</span>
                                                 @enderror
                                             </div>
                                             <div class="card-body" class="btn-text-right">

@@ -40,7 +40,7 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" wire:click="createCustomer">Submit</button>
+                    <button type="submit" class="btn btn-primary" wire:click.prevent="createCustomer">Submit</button>
                 </div>
             </form>
         </div>

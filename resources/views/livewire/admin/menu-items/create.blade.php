@@ -30,7 +30,7 @@
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            @error('category')
+                                            @error('menu_category_id')
                                                 <span class="error text-danger">{{ $message }}</span>
                                             @enderror
 
@@ -69,7 +69,7 @@
                                             <div class="card-body" class="btn-text-right">
                                                 <div class="buttons">
                                                     <button class="btn btn-success" type="submit"
-                                                        wire:click='createMenuItem'>Save</button>
+                                                        wire:click.prevent='createMenuItem'>Save</button>
                                                     <a href="#" class="btn btn-danger">Back to list</a>
                                                 </div>
                                             </div>

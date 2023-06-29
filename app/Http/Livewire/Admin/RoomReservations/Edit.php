@@ -78,9 +78,11 @@ class Edit extends Component
             }
         }
 
-        session()->flash('success', 'Room reservation updated successfully.');
-
-        return redirect()->route('admin.room-reservations.index');
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Room Reservation Updated Successfully'
+        ]);
     }
 
     public function render()

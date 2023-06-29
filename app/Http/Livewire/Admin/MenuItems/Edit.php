@@ -52,6 +52,12 @@ class Edit extends Component
         }
 
         $menuItem->update();
+
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Menu Item Updated Successfully'
+        ]);
     }
 
     public function render()

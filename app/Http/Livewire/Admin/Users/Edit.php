@@ -41,6 +41,12 @@ class Edit extends Component
         $user->email = $this->email;
         $user->role_id = $this->role_id;
         $user->update();
+
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'User Updated Successfully'
+        ]);
     }
 
 

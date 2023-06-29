@@ -21,5 +21,12 @@ class Index extends Component
     {
         $roomType = RoomType::where('id', $id)->first();
         $roomType->delete();
+
+
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Room Type Deleted Successfully'
+        ]);
     }
 }

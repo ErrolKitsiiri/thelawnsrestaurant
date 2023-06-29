@@ -23,8 +23,14 @@ class Index extends Component
 
         $menuCategory->delete();
 
-        $this->emit('done', [
-            'success' => "Successfully Deleted the Menu Category from the system"
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Menu Category Deleted Successfully'
         ]);
+
+        // $this->emit('done', [
+        //     'success' => "Successfully Deleted the Menu Category from the system"
+        // ]);
     }
 }

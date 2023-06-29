@@ -41,6 +41,12 @@ class Edit extends Component
         $customer->phone_number = $this->phone_number;
         $customer->address = $this->address;
         $customer->update();
+
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Customer Details Updated Successfully'
+        ]);
     }
 
     public function render()

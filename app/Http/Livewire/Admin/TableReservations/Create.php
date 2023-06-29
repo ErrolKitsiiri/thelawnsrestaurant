@@ -10,6 +10,7 @@ use Livewire\Component;
 class Create extends Component
 {
     public $client;
+    public $selectedCustomer;
 
     public $name, $reservation_date, $reservation_time, $pax, $data, $customer_name, $customerData;
 
@@ -20,8 +21,8 @@ class Create extends Component
 
 
     protected $rules = [
-        //'name'=>'required',
-        'reservation_date' => 'required',
+        'selectedCustomer' => 'required',
+        'reservation_date' => 'required|date|after_or_equal:today',
         'reservation_time' => 'required',
         'pax' => 'required|max:20',
     ];
@@ -43,6 +44,12 @@ class Create extends Component
         $reservation->save();
 
         $this->reset();
+
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'New Table Reservation Created Successfully'
+        ]);
     }
 
 

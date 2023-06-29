@@ -31,9 +31,10 @@ class DatabaseSeeder extends Seeder
             MenuCategoriesSeeder::class,
             MenuItemsSeeder::class,
             TestimonialsSeeder::class,
-            RoomsSeeder::class,
-            RoomReservationsSeeder::class,
             RoomTypesSeeder::class,
+            RoomsSeeder::class,
+            // RoomReservationsSeeder::class,
+            
         ]);
     }
 }

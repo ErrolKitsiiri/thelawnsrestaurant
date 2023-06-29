@@ -39,6 +39,12 @@ class Edit extends Component
         $roomType->rate = $this->rate;
 
         $roomType->update();
+
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Room Type Updated Successfully'
+        ]);
     }
     public function render()
     {

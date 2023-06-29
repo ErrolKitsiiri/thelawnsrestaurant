@@ -13,6 +13,7 @@ class Create extends Component
         'name' => 'required|min:5',
         'email' => 'required',
         'phone_number' => 'required',
+        'address' => 'required',
     ];
 
 
@@ -27,6 +28,14 @@ class Create extends Component
         $customer->phone_number = $this->phone_number;
         $customer->address = $this->address;
         $customer->save();
+
+        $this->reset();
+
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'New Customer Registered Successfully'
+        ]);
 
     }
     public function render()

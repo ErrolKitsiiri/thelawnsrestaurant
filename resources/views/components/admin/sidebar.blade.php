@@ -45,7 +45,7 @@
             </div>
             <a class="nav-link {{ request()->routeIs('admin.menu_items')?'active':'collapsed' }}  " href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts4"
                 aria-expanded="false" aria-controls="collapseLayouts4">
-                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                <div class="sb-nav-link-icon"><i class="fa fa-cutlery" aria-hidden="true"></i></div>
                 Menu Items
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
@@ -57,7 +57,7 @@
             </div>
             <a class="nav-link {{ request()->routeIs('admin.table_reservations')?'active':'collapsed' }}  " href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts5"
                 aria-expanded="false" aria-controls="collapseLayouts5">
-                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                <div class="sb-nav-link-icon"><i class="fas fa-table"></i></div>
                 Table Reservations
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
@@ -69,7 +69,7 @@
             </div>
             <a class="nav-link {{ request()->routeIs('admin.room_types')?'active':'collapsed' }}  " href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts6"
                 aria-expanded="false" aria-controls="collapseLayouts6">
-                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                <div class="sb-nav-link-icon"><i class="fas fa-hotel"></i></div>
                 Room Types
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>
@@ -81,7 +81,7 @@
             </div>
             <a class="nav-link {{ request()->routeIs('admin.room_reservations')?'active':'collapsed' }}  " href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts7"
                 aria-expanded="false" aria-controls="collapseLayouts7">
-                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                <div class="sb-nav-link-icon"><i class="fa-solid fa-bed"></i></div>
                 Room Reservations
                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
             </a>

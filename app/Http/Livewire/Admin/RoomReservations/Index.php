@@ -14,7 +14,7 @@ class Index extends Component
 
     public function render()
     {
-        $room_reservations = RoomReservation::with('roomReservation.roomType')->paginate(10);
+        $room_reservations = RoomReservation::with('roomReservation.roomType')->where('isCheckedOut',1 )->paginate(10);
 
         //$room_reservations = RoomReservation::paginate(10);
         // dd($room_reservations);
@@ -24,19 +24,10 @@ class Index extends Component
     public function checkoutRoom($id)
     {
         $room_reservation = RoomReservation::find($id);
+        $room_reservation->isCheckedOut = 0;
+        $room_reservation->save();
+        session()->flash('success', 'Room has been checked out successfully.');
 
-        if ($room_reservation) {
-            // Delete the room reservation
-            $room_reservation->delete();
-
-            // Delete the corresponding room selection
-            $roomSelection = RoomSelection::where('room_reservation_id', $id)->first();
-            if ($roomSelection) {
-                $roomSelection->delete();
-            }
-
-            session()->flash('success', 'Room has been checked out successfully.');
-        }
     }
 
     public function deleteRoomReservation($id)
@@ -53,7 +44,12 @@ class Index extends Component
                 $roomSelection->delete();
             }
 
-            session()->flash('success', 'Room has been checked out successfully.');
+            // session()->flash('success', 'Room has been checked out successfully.');
+            $this->dispatchBrowserEvent('success', [
+                'title'=>'Success',
+                'icon'=>'success',
+                'text'=>'Room Reservation Deleted Successfully'
+            ]);
         }
     }
 }

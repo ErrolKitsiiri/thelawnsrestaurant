@@ -18,9 +18,9 @@ class Edit extends Component
         'new_image' => 'image',
     ];
 
-    protected $listeners = [
-        'done' => 'render'
-    ];
+    // protected $listeners = [
+    //     'done' => 'render'
+    // ];
 
     public function mount($id)
     {
@@ -44,8 +44,13 @@ class Edit extends Component
 
         $this->menuCategory->save();
 
-        $this->emit('done', [
-            'success' => 'Successfully Edited this Menu Category'
+        // $this->emit('done', [
+        //     'success' => 'Successfully Edited this Menu Category'
+        // ]);
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Menu Category Updated Successfully'
         ]);
     }
 

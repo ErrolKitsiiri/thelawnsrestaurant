@@ -30,6 +30,12 @@ class Create extends Component
 
         $user->save();
 
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'User Created Successfully'
+        ]);
+
     }
 
     public function render()

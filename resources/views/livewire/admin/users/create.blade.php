@@ -27,31 +27,30 @@
                         <option>Select User Role</option>
                         <option value="1">Administrator</option>
                         <option value="2">Non-Administrator</option>
-                        @error('role-id')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
                     </select>
                 </div>
-
+                @error('role_id')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
                 <div class="form-group">
                     <label for="exampleInputPassword1">Email Address</label>
                     <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Enter Email"
                         wire:model='email'>
-                    @error('email')
-                        <p class="text-danger"> {{ $message }}</p>
-                    @enderror
                 </div>
+                @error('email')
+                    <p class="text-danger"> {{ $message }}</p>
+                @enderror
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
                     <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password"
                         wire:model='password'>
-                    @error('password')
-                        <p class="text-danger">{{ $message }}</p>
-                    @enderror
                 </div>
+                @error('password')
+                    <p class="text-danger">{{ $message }}</p>
+                @enderror
             </div>
             <div class="card-footer">
-                <button type="submit" class="btn btn-primary" wire:click='createUser'>Submit</button>
+                <button type="submit" class="btn btn-primary" wire:click.prevent='createUser'>Submit</button>
             </div>
         </form>
     </div>

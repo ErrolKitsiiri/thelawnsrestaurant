@@ -18,6 +18,7 @@ return new class extends Migration
             $table->foreignId('customer_id');
             $table->foreignId('room_id');
             $table->float('rate');
+            $table->boolean('isCheckedOut')->default(1);
             $table->dateTime('confirmed_at')->nullable();
             $table->timestamps();
         });

@@ -10,7 +10,7 @@ class Edit extends Component
     public $pax, $reservation_date, $reservation_time, $name, $email, $phone_number, $tableReservationId, $customer_id;
 
     protected $rules = [
-        'reservation_date' => 'required',
+        'reservation_date' => 'required|date|after_or_equal:today',
         'reservation_time' => 'required',
 
     ];
@@ -45,6 +45,12 @@ class Edit extends Component
         $tableReservation->pax = $this->pax;
 
         $tableReservation->update();
+
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Table Reservation Updated Successfully'
+        ]);
 
     }
 

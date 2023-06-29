@@ -25,8 +25,14 @@ class Create extends Component
         $roomType->rate = $this->rate;
 
         $roomType->save();
-        $this->dispatchBrowserEvent('success', ['message'=>'A new roomtype has been added successfully']);
+        // $this->dispatchBrowserEvent('success', ['message'=>'A new roomtype has been added successfully']);
+
         $this->reset();
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'New Room Type Created Successfully'
+        ]);
 
     }
 

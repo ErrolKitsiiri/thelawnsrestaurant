@@ -35,5 +35,11 @@ class Index extends Component
     {
         $table_reservations = TableReservation::where('id', $id)->first();
         $table_reservations->delete();
+
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Table Reservation Deleted Successfully'
+        ]);
     }
 }

@@ -27,5 +27,11 @@ class Index extends Component
         $customer = Customer::where('id', $id)->first();
     
         $customer->delete();
+
+        $this->dispatchBrowserEvent('success', [
+            'title'=>'Success',
+            'icon'=>'success',
+            'text'=>'Customer Deleted Successfully'
+        ]);
     }
 }
