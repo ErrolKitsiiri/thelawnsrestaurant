@@ -13,37 +13,37 @@
                                     <div class="card-body ring-offset-2">
                                         <form>
                                             <div class="form-group" wire:ignore>
-                                                <select class="form-control" id="select2" class="form-control"
-                                                    wire:model="customer">
+                                                <select id="select2" class="form-control" wire:model="id">
                                                     <option value="">Select Customer</option>
                                                     @foreach ($customers as $customer)
                                                         <option value="{{ $customer }}">{{ $customer->name }}
                                                         </option>
+
+                                                        @error( $customer->name )
+                                                        <span class="error text-danger">{{ $message }}</span>
+                                                    @enderror
                                                     @endforeach
                                                 </select>
                                             </div>
-                                            @error('customer')
-                                                <span class="error text-danger">{{ $message }}</span>
-                                            @enderror
+                                            @if ('id')
+                                                <div class="form-group">
+                                                    <label wire:ignore>Customer Name:</label>
+                                                    <input type="text" class="form-control" readonly
+                                                        value=" {{ $customerData['name'] ?? null }}">
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label wire:ignore>Customer Name:</label>
-                                                <input type="text" class="form-control" readonly
-                                                    value=" {{ $customerData['name'] ?? null }}">
-                                            </div>
+                                                <div class="form-group">
+                                                    <label>Customer Email:</label>
+                                                    <input type="text" class="form-control" readonly
+                                                        value="{{ $customerData['email'] ?? null }}">
+                                                </div>
 
-                                            <div class="form-group">
-                                                <label>Customer Email:</label>
-                                                <input type="text" class="form-control" readonly
-                                                    value="{{ $customerData['email'] ?? null }}">
-                                            </div>
-
-                                            <div class="form-group">
-                                                <label>Customer Phone Number:</label>
-                                                <input type="text" class="form-control" readonly
-                                                    value="{{ $customerData['phone_number'] ?? null }}">
-                                            </div>
-
+                                                <div class="form-group">
+                                                    <label>Customer Phone Number:</label>
+                                                    <input type="text" class="form-control" readonly
+                                                        value="{{ $customerData['phone_number'] ?? null }}">
+                                                </div>
+                                            @endif
                                             <div class="form-group">
                                                 <label for="room_type">Room Type</label>
                                                 <select class="form-control" name="room_type" id="room_type"

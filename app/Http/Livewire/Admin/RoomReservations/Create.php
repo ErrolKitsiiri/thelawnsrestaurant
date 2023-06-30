@@ -17,16 +17,16 @@ class Create extends Component
     public $roomNumbers;
     public $selectedRoomType;
     public $roomSelection;
-    public $customer;
+    public $customer_id;
     public $roomtype;
 
 
     public $name, $check_in, $check_out, $rate, $data, $customerData, $roomNumber;
 
-
     protected $rules = [
-        'customer'=>'required',
-        'check_in' => 'required',
+        // 'customer_id'=>'required',
+        // 'customer_id' => 'required|not_in:0',
+        'check_in' => 'required|date|after_or_equal:today',
         'check_out' => 'required|date|after:checkIn',
         'rate' => 'required',
         'roomType' => 'required',
@@ -121,7 +121,8 @@ class Create extends Component
             $this->rate = null;
             session()->flash('error', 'Please provide valid check-in, check-out dates, and room type.');
         }
-
+        
+        $this->reset();
         $this->dispatchBrowserEvent('success', [
             'title' => 'Success',
             'icon' => 'success',
