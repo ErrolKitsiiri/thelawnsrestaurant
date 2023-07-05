@@ -58,6 +58,8 @@
     <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
     <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@10.16.6/dist/sweetalert2.min.css">
+
 
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
     <link href="/admin/css/styles.css" rel="stylesheet" />
@@ -147,12 +149,26 @@
         });
     </script> --}}
 
-    <script>
+    {{-- <script>
         window.addEventListener('success', function(e) {
             Swal.fire({
                 icon: e.detail.icon,
                 title: e.detail.title,
                 text: e.detail.text
+            });
+        });
+    </script> --}}
+
+    <script>
+        window.addEventListener('success', function(e) {
+            Swal.fire({
+                icon: e.detail.icon,
+                title: e.detail.title,
+                text: e.detail.text,
+                position: 'top-end',
+                toast: true,
+                showConfirmButton: false,
+                timer: 5000
             });
         });
     </script>

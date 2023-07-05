@@ -14,32 +14,32 @@
                                         <form>
                                             <div class="form-group">
                                                 <label>Room Type Name</label>
-                                                <input type="text" wire:model="title" class="form-control">
+                                                <input type="text" wire:model="roomType.title" class="form-control" placeholder="Enter Room Type Name">
                                             </div>
-                                            @error('title')
+                                            @error('roomType.title')
                                                 <span class="error text-danger">{{ $message }}</span>
                                             @enderror
 
                                             <div class="form-group">
                                                 <label>Room Capacity</label>
-                                                <input type="number" wire:model="pax" class="form-control">
+                                                <input type="number" wire:model="roomType.pax" class="form-control" placeholder="Enter Room Capacity">
                                             </div>
-                                            @error('pax')
+                                            @error('roomType.pax')
                                                 <span class="error text-danger">{{ $message }}</span>
                                             @enderror
 
                                             <div class="form-group">
                                                 <label>Rate Charged Per Night</label>
-                                                <input type="number" wire:model="rate" class="form-control">
+                                                <input type="number" wire:model="roomType.rate" class="form-control" placeholder="Enter amount charged per night">
                                             </div>
-                                            @error('rate')
+                                            @error('roomType.rate')
                                                 <span class="error text-danger">{{ $message }}</span>
                                             @enderror
                                             <div class="card-body" class="btn-text-right">
                                                 <div class="buttons">
                                                     <button class="btn btn-success" type="submit"
-                                                        wire:click.prevent='createRoomType'>Save</button>
-                                                    <a href="#" class="btn btn-danger">Cancel</a>
+                                                        wire:click.prevent='save'>Save</button>
+                                                    <a href="{{ route('admin.room-types.index') }}" class="btn btn-danger">Back to list</a>
                                                 </div>
                                             </div>
                                         </form>

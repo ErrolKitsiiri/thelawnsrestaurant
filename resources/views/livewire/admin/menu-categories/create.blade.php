@@ -12,15 +12,15 @@
                                 <div class="card-body ring-offset-2">
                                     <form>
                                         <div class="form-group">
-                                            <label>Category Name</label>
-                                            <input type="text" wire:model="title" class="form-control">
+                                            <label for="title">Category Name</label>
+                                            <input type="text" wire:model="menuCategory.title" class="form-control">
                                         </div>
-                                        @error('title')
+                                        @error('menuCategory.title')
                                             <span class="error text-danger">{{ $message }}</span>
                                         @enderror
                                         <div class="form-group">
-                                            <label>Upload an Image of the Category</label>
-                                            <input type="file" wire:model="image_path" name='image' class="form-control"
+                                            <label for="image_path">Upload an Image of the Category</label>
+                                            <input type="file" wire:model="image_path" name='image_path' class="form-control"
                                                 placeholder="Image">
                                             @if ($image_path)
                                                 <div class="row">
@@ -36,7 +36,7 @@
                                         @enderror
                                         <div class="card-body" class="btn-text-right">
                                             <div class="buttons">
-                                                <button class="btn btn-success" type="submit" wire:click.prevent='createCategory'>Save</button>
+                                                <button class="btn btn-success" type="submit" wire:click.prevent='create'>Save</button>
                                                 <a href="{{ route('admin.menu-categories.index') }}" class="btn btn-danger">Back to list</a>
                                             </div>
                                         </div>

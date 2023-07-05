@@ -8,39 +8,38 @@
                 <div class="card-body">
                     <div class="form-group">
                         <label for="exampleInputEmail1">Name</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter Name"
-                            wire:model='name'>
-                        @error('name')
+                        <input type="text" class="form-control" placeholder="Enter Name" wire:model='customer.name'>
+                        @error('customer.name')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Email Address</label>
-                        <input type="email" class="form-control" id="exampleInputPassword1" placeholder="Enter Email"
-                            wire:model='email'>
-                        @error('email')
+                        <input type="email" class="form-control" placeholder="Enter Email"
+                            wire:model='customer.email'>
+                        @error('customer.email')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Phone Number</label>
-                        <input type="text" class="form-control" id="exampleInputPassword1"
-                            placeholder="Enter Phone Number" wire:model='phone_number'>
-                        @error('phone_number')
+                        <input type="text" class="form-control" placeholder="Enter Phone Number"
+                            wire:model='customer.phone_number'>
+                        @error('customer.phone_number')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1">Address</label>
                         <input type="text" class="form-control" id="exampleInputPassword1"
-                            placeholder="Enter Address" wire:model='address'>
-                        @error('address')
+                            placeholder="Enter Address" wire:model='customer.address'>
+                        @error('customer.address')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" class="btn btn-primary" wire:click.prevent="createCustomer">Submit</button>
+                    <button type="submit" class="btn btn-primary" wire:click.prevent="save">Submit</button>
                 </div>
             </form>
         </div>

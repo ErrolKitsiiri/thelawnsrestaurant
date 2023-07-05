@@ -13,11 +13,11 @@
                         <p class="text-danger">{{ $message }}</p>
                     @enderror
                 </div>
-
-                {{-- <select wire:model="role_id" class="form-control">
+{{-- 
+                <select wire:model="role_id" class="form-control">
                     <option>Choose Service Category</option>
                     @foreach ($users as $user)
-                        <option value="{{ $user->user_id }}">{{ $user_id->name }}</option>
+                        <option value="{{ $user->role_id }}">{{ $user->role_id }}</option>
                     @endforeach
                 </select> --}}
 
@@ -42,7 +42,7 @@
                 @enderror
                 <div class="form-group">
                     <label for="exampleInputPassword1">Password</label>
-                    <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password"
+                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password"
                         wire:model='password'>
                 </div>
                 @error('password')

@@ -30,9 +30,9 @@
                                             @foreach ($menuItems as $key => $menuItem)
                                                 <tr>
                                                     <td> {{ $menuItems->firstItem() + $key }} </td>
-                                                    <td>{{ $menuItem->title }}</td>
-                                                    <td>{{ $menuItem->menuCategory->title }}</td>
-                                                    <td>{{ $menuItem->price }}</td>
+                                                    <td>{{ $menuItem->title ?? '' }}</td>
+                                                    <td>{{ $menuItem->menuCategory->title ?? '' }}</td>
+                                                    <td>{{ $menuItem->price ?? ''}}</td>
                                                     <td>
                                                         <img src="{{ asset('images/admin/menu_item_images/' . $menuItem->image_path) }}"
                                                             height="100" width="100">

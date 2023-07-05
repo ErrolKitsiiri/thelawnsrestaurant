@@ -7,29 +7,25 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $name, $email, $phone_number, $address;
+    public Customer $customer;
 
     protected $rules = [
-        'name' => 'required|min:5',
-        'email' => 'required',
-        'phone_number' => 'required',
-        'address' => 'required',
+        'customer.name' => 'required|min:5',
+        'customer.email' => 'required',
+        'customer.phone_number' => 'required',
+        'customer.address' => 'required',
     ];
 
+    public function mount(){
+        $this->customer = new Customer();
+    }
 
-
-    public function createCustomer()
+    public function save()
     {
         $this->validate();
+        $this->customer->save();
 
-        $customer = new Customer();
-        $customer->name = $this->name;
-        $customer->email = $this->email;
-        $customer->phone_number = $this->phone_number;
-        $customer->address = $this->address;
-        $customer->save();
-
-        $this->reset();
+        $this->resetInput();
 
         $this->dispatchBrowserEvent('success', [
             'title'=>'Success',
@@ -37,6 +33,10 @@ class Create extends Component
             'text'=>'New Customer Registered Successfully'
         ]);
 
+    }
+    public function resetInput()
+    {
+        $this->customer = new Customer();
     }
     public function render()
     {

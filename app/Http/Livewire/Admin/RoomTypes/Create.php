@@ -7,33 +7,44 @@ use Livewire\Component;
 
 class Create extends Component
 {
-    public $title, $pax, $rate;
+
+    public ?RoomType $roomType;
+
+    // protected $listeners = [
+    //     'success' => 'render'
+    // ];
 
     protected $rules = [
-        'title'=>'required|min:6',
-        'pax'=>'required',
-        'rate'=>'required',
+        'roomType.title' => 'required',
+        'roomType.pax' => 'required',
+        'roomType.rate' => 'required',
     ];
 
-    public function createRoomType(){
+    public function mount()
+    {
+        $this->roomType = new RoomType();
+    }
+
+    public function save()
+    {
 
         $this->validate();
+        $this->roomType->save();
 
-        $roomType = new RoomType();
-        $roomType->title = $this->title;
-        $roomType->pax = $this->pax;
-        $roomType->rate = $this->rate;
+        //$this->emit('success', ['message'=>'A new roomtype has been added successfully']);
 
-        $roomType->save();
-        // $this->dispatchBrowserEvent('success', ['message'=>'A new roomtype has been added successfully']);
+        $this->resetInput();
 
-        $this->reset();
         $this->dispatchBrowserEvent('success', [
-            'title'=>'Success',
-            'icon'=>'success',
-            'text'=>'New Room Type Created Successfully'
+            'title' => 'Success',
+            'icon' => 'success',
+            'text' => 'New Room Type Created Successfully',
         ]);
+    }
 
+    public function resetInput()
+    {
+        $this->roomType = new RoomType();
     }
 
     public function render()

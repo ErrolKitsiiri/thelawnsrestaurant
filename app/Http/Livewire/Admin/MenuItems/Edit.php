@@ -15,11 +15,11 @@ class Edit extends Component
     use WithFileUploads;
 
     protected $rules = [
-        'title' => 'required|min:6',
+        'title' => 'required',
         'price' => 'required',
         'description' => 'required',
-        //'image' => 'required'
-    ]; 
+        // 'new_image' => 'required'
+    ];
 
     public function mount($id)
     {
@@ -29,6 +29,7 @@ class Edit extends Component
         $this->title = $menuItem->title;
         $this->description = $menuItem->description;
         $this->price = $menuItem->price;
+        $this->image = $menuItem->image_path;
         $this->menu_category_id = $menuItem->menu_category_id;
 
         $this->menuItemId = $id;
@@ -43,20 +44,24 @@ class Edit extends Component
         $menuItem->title = $this->title;
         $menuItem->description = $this->description;
         $menuItem->price = $this->price;
+        $menuItem->menu_category_id = $this->menu_category_id;
 
         if ($this->new_image) {
+            if (file_exists('images/admin/menu_item_images/' . $this->image)) {
+                unlink('images/admin/menu_item_images/' . $this->image);
+            }
 
             $imagename = Carbon::now()->timestamp . '.' . $this->new_image->extension();
-            $this->new_image->storeAs('menu_items_images', $imagename);
+            $this->new_image->storeAs('admin/menu_item_images', $imagename);
             $menuItem->image_path = $imagename;
         }
 
-        $menuItem->update();
+        $menuItem->save();
 
         $this->dispatchBrowserEvent('success', [
-            'title'=>'Success',
-            'icon'=>'success',
-            'text'=>'Menu Item Updated Successfully'
+            'title' => 'Success',
+            'icon' => 'success',
+            'text' => 'Menu Item Updated Successfully'
         ]);
     }
 

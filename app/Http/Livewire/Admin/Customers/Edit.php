@@ -7,40 +7,27 @@ use Livewire\Component;
 
 class Edit extends Component
 {
-    public $name, $email, $phone_number, $address;
-
-    public $customerId;
+    public Customer $customer;
 
     protected $rules = [
-        'name' => 'required|min:5',
-        'email' => 'required',
-        'phone_number' => 'required',
+        'customer.name' => 'required|min:5',
+        'customer.email' => 'required',
+        'customer.phone_number' => 'required',
+        'customer.address' => 'required',
     ];
 
 
     public function mount($id)
     {
-        $customer = Customer::where('id', $id)->first();
-        $this->name  = $customer->name;
-        $this->email  = $customer->email;
-        $this->phone_number  = $customer->phone_number;
-        $this->address  = $customer->address;
-        $this->customerId = $id;
-
-        //dd($id);
+        $this->customer = Customer::find($id);
     }
 
-    public function updateCustomer()
+    public function update()
     {
 
         $this->validate();
 
-        $customer = Customer::where('id', $this->customerId)->first();
-        $customer->name = $this->name;
-        $customer->email = $this->email;
-        $customer->phone_number = $this->phone_number;
-        $customer->address = $this->address;
-        $customer->update();
+        $this->customer->save();
 
         $this->dispatchBrowserEvent('success', [
             'title'=>'Success',

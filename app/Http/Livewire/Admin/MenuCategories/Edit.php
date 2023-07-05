@@ -25,7 +25,7 @@ class Edit extends Component
     public function mount($id)
     {
         $this->menuCategory = MenuCategory::find($id);
-            $this->image = MenuCategory::find($id)->image_path;
+        $this->image = MenuCategory::find($id)->image_path;
     }
 
     public function save()
@@ -48,9 +48,9 @@ class Edit extends Component
         //     'success' => 'Successfully Edited this Menu Category'
         // ]);
         $this->dispatchBrowserEvent('success', [
-            'title'=>'Success',
-            'icon'=>'success',
-            'text'=>'Menu Category Updated Successfully'
+            'title' => 'Success',
+            'icon' => 'success',
+            'text' => 'Menu Category Updated Successfully'
         ]);
     }
 

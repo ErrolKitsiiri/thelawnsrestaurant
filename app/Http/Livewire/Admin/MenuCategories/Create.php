@@ -9,7 +9,9 @@ use Livewire\WithFileUploads;
 
 class Create extends Component
 {
-    public $image_path, $title;
+
+    public MenuCategory $menuCategory;
+    public $image_path;
     use WithFileUploads;
 
     // protected $listeners = [
@@ -17,34 +19,42 @@ class Create extends Component
     // ];
 
     protected $rules = [
-        'title' => 'required',
-        'image_path' => 'image',
+        'menuCategory.title' => 'required',
+        'image_path' => 'required|image',
     ];
 
-    public function createCategory()
+    public function mount()
+    {
+        $this->menuCategory = new MenuCategory();
+    }
+
+    public function create()
     {
 
         $this->validate();
 
-        $category = new MenuCategory();
-        $category->title = $this->title;
-
         $imagename = Carbon::now()->timestamp . '.' . $this->image_path->extension();
-        $this->image_path->storeAs('admin/menu_category_images', $imagename);
-        $category->image_path = $imagename;
-        $category->save();
+        $this->menuCategory->image_path->storeAs('admin/menu_category_images', $imagename);
+        $this->menuCategory->image_path = $imagename;
+
+        $this->menuCategory->save();
 
         // $this->emit('done', [
         //     'success'=>"You have Successfully Created a new Menu Category"
         // ]);
 
         $this->dispatchBrowserEvent('success', [
-            'title'=>'Success',
-            'icon'=>'success',
-            'text'=>'New Menu Category Posted Successfully'
+            'title' => 'Success',
+            'icon' => 'success',
+            'text' => 'You have Successfully Created a new Menu Category'
         ]);
 
-        $this->reset();
+        $this->resetInput();
+    }
+    public function resetInput()
+    {
+        $this->menuCategory = new MenuCategory();
+        $this->image_path = null;
     }
 
     public function render()

@@ -26,7 +26,7 @@ class Create extends Component
         $user->name = $this->name;
         $user->email = $this->email;
         $user->role_id = $this->role_id;
-        $user->password = $this->password;
+        $user->password = Hash::make($this->password);
 
         $user->save();
 
@@ -40,7 +40,8 @@ class Create extends Component
 
     public function render()
     {
-        return view('livewire.admin.users.create');
+        $users = User::all();
+        return view('livewire.admin.users.create', ['users'=>$users]);
     }
 }
 // {

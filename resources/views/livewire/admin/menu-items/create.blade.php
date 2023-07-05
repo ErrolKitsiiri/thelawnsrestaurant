@@ -70,7 +70,7 @@
                                                 <div class="buttons">
                                                     <button class="btn btn-success" type="submit"
                                                         wire:click.prevent='createMenuItem'>Save</button>
-                                                    <a href="#" class="btn btn-danger">Back to list</a>
+                                                    <a href="{{ route('admin.menu-items.index') }}" class="btn btn-danger">Back to list</a>
                                                 </div>
                                             </div>
                                         </form>
