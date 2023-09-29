@@ -1,5 +1,4 @@
 <div>
-
     <div class="container-fluid">
         <div class="card my-5">
             <div class="card-header">
@@ -49,7 +48,6 @@
                 {{ $users->links() }}
                 @endif
             </div>
-
         </div>
     </div>
 </div>
